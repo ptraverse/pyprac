@@ -1,0 +1,6 @@
+python
+sudo apt-get install python-django
+cd to code folder
+django-admin startproject noah
+python manage.py
+python manage.py runserver 0.0.0.0:8000
