@@ -5,7 +5,7 @@ class Company(object):
 		self.name = name
 		self.rake = rake
 		self.rev = rev
-	def __unicode__(self):
+	def __str__(self):
 		return "Company "+self.name+" takes rake "+str(self.rake)+" and has balance "+str(self.rev)
 
 class Lottery(object):
@@ -90,4 +90,4 @@ print "min points was "+str(minpoints)
 
 print "number of events: "+str(len(events))
 
-print str(c)
+print c
