@@ -1,0 +1,7 @@
+74 just won 1.67824835214!
+maximum cost was 0.0437507021348
+minimum cost was 0.0141508995037
+max points was 4.67011506828
+min points was 1.62429172569
+number of events: 104
+<__main__.Company object at 0x974cf2c>
