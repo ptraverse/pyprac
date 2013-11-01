@@ -46,11 +46,14 @@ class User(object):
 c = Company("Gimme2",0.5)
 l = Lottery()
 
+num_users = 100;
+
 users = []
-users.append(User("Cliff"))
-users.append(User("Cole"))
-users.append(User("Catherine"))
-users.append(User("Carson"))
+#users.append(User("Cliff"))
+#users.append(User("Cole"))
+#users.append(User("Catherine"))
+#users.append(User("Carson"))
+
 for count in range(0,100):
 	users.append(User(str(count)))
 
