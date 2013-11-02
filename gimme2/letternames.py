@@ -9,14 +9,14 @@ def letternames(letter,num_names):
 			      \w +   # As many letters lowercase""", re.X)			
 	names = re.findall(patt,  data)
 	ret_list = []
-	i = 0;
+	i = 0;	
 	for name in names:
 		if name.startswith(letter.upper()):
-			if (i<num_names):
-	 			ret_list.append(name)
+			if (i<=num_names):
+ 				ret_list.append(name)
 				i += 1
 	return ret_list
 
-# a_names = letternames('a',4)
-# for name in a_names:
-# 	print name
+a_names = letternames('a',4)
+for name in a_names:
+ 	print name
