@@ -9,7 +9,7 @@ class User(models.Model):
 	cash = models.FloatField()
 	point_multiplier = models.FloatField()
 	def ___repr__(self):
-                return self.name
+		return self.name
 	def create_post(self,title,description,price):
 		p = Post(name = title,description = description,price = price,user_created = self)
 		p.save()
@@ -36,7 +36,7 @@ class Post(models.Model):
 		return self.name+" by "+self.user_created.repr()
 
 
-class Comments(models.Model):
+class Comment(models.Model):
 	parent_post = models.ForeignKey(Post)
 	text = models.TextField()
 	user_created = models.ForeignKey(User)
