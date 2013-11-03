@@ -1,0 +1,11 @@
+{% block content %}
+<h1>Posts </h1>
+<table border='1'>
+{% for p in postlist %}
+<tr>
+<td>{{ p.name }}</td><td>{{ p.user_created }}</td>
+</tr>
+{% endfor %}
+</table>
+Lazy homepage for now:w
+{% endblock %}

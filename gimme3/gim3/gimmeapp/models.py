@@ -1,10 +1,7 @@
 from django.db import models
 
 # Create your models here.
-<<<<<<< HEAD
-=======
 
->>>>>>> 4d22246ac970c80a7b44c174e1df917129ea9086
 class User(models.Model):
 	name = models.CharField(max_length=12)
 	date_created = models.DateTimeField()
@@ -32,22 +29,12 @@ class User(models.Model):
 
 class Post(models.Model):
 	name = models.CharField(max_length=12)
-	description = models.TextField
-	price = models.FloatField
-	user_created = models.ForeignKey(User)
+	description = models.TextField()
+	price = models.FloatField(default=1.00)
+	#user_created = models.ForeignKey(User)
+	user_created = models.CharField(max_length=12)	
 	def __repr__(self):
 		return self.name+" by "+self.user_created.repr()
-
-<<<<<<< HEAD
-class Post(models.Model):
-	name = models.CharField(max_length=12)
-	description = models.TextField
-	price = models.FloatField
-	user_created = models.ForeignKey(User)
-	def __repr__(self):
-		return self.name+" by "+self.user_created.repr()
-=======
->>>>>>> 4d22246ac970c80a7b44c174e1df917129ea9086
 
 class Comment(models.Model):
 	parent_post = models.ForeignKey(Post)
@@ -66,7 +53,7 @@ class Like(models.Model):
 
 class Lottery(models.Model):
 	current_points = models.IntegerField()
-	current_cash = models.FloatField
+	current_cash = models.FloatField()
 	def __str__(self):
                 return self.pool_total
 	def draw(self,users):
