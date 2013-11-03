@@ -5,6 +5,7 @@ from django.conf.urls.defaults import patterns, include, url
 # admin.autodiscover()
 
 urlpatterns = patterns('',
+    url(r'^post/(.+)/','gim3.gimmeapp.views.view_post'),
     # Examples:
     # url(r'^$', 'gim3.views.home', name='home'),
     # url(r'^gim3/', include('gim3.foo.urls')),
