@@ -1,13 +1,6 @@
 from django.db import models
 
 # Create your models here.
-class Post(models.Model):
-	name = models.CharField(max_length=12)
-	description = models.TextField
-	price = models.FloatField
-	user_created = models.ForeignKey(User)
-	def __repr__(self):
-		return self.name+" by "+self.user_created.repr()
 
 class User(models.Model):
 	name = models.CharField(max_length=12)
@@ -34,6 +27,14 @@ class User(models.Model):
 		return self.point_multiplier*strlen(post.description)
 		# TODO Finish this 
 
+class Post(models.Model):
+	name = models.CharField(max_length=12)
+	description = models.TextField
+	price = models.FloatField
+	user_created = models.ForeignKey(User)
+	def __repr__(self):
+		return self.name+" by "+self.user_created.repr()
+
 
 class Comments(models.Model):
 	parent_post = models.ForeignKey(Post)
@@ -55,7 +56,7 @@ class Lottery(models.Model):
 	current_cash = models.FloatField
 	def __str__(self):
                 return self.pool_total
-	def draw(self,users)
+	def draw(self,users):
 		# TODO - Use the points sytem in random choosing
 		u = random.choice(users)
 		u.cash += self.current_cash
