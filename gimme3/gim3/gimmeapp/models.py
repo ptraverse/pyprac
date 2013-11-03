@@ -1,6 +1,10 @@
 from django.db import models
 
 # Create your models here.
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4d22246ac970c80a7b44c174e1df917129ea9086
 class User(models.Model):
 	name = models.CharField(max_length=12)
 	date_created = models.DateTimeField()
@@ -8,7 +12,7 @@ class User(models.Model):
 	cash = models.FloatField()
 	point_multiplier = models.FloatField()
 	def ___repr__(self):
-                return self.name
+		return self.name
 	def create_post(self,title,description,price):
 		p = Post(name = title,description = description,price = price,user_created = self)
 		p.save()
@@ -34,6 +38,7 @@ class Post(models.Model):
 	def __repr__(self):
 		return self.name+" by "+self.user_created.repr()
 
+<<<<<<< HEAD
 class Post(models.Model):
 	name = models.CharField(max_length=12)
 	description = models.TextField
@@ -41,8 +46,10 @@ class Post(models.Model):
 	user_created = models.ForeignKey(User)
 	def __repr__(self):
 		return self.name+" by "+self.user_created.repr()
+=======
+>>>>>>> 4d22246ac970c80a7b44c174e1df917129ea9086
 
-class Comments(models.Model):
+class Comment(models.Model):
 	parent_post = models.ForeignKey(Post)
 	text = models.TextField()
 	user_created = models.ForeignKey(User)
