@@ -1,11 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Create Post</title>
-<link rel="stylesheet" type="text/css" href="/static/view.css" media="all">
-<script type="text/javascript" src="/static/view.js"></script>
+<link rel="stylesheet" type="text/css" href="/preform/form/view.css" media="all">
+<script type="text/javascript" src="/preform/form/view.js"></script>
 
 </head>
 <body id="main_body" >
@@ -14,7 +13,7 @@
 	<div id="form_container">
 	
 		<h1><a>Create Post</a></h1>
-		<form id="form_736263" class="appnitro"  method="post" action="/create-post/" > {% csrf_token %} 
+		<form id="form_736263" class="appnitro"  method="post" action="">
 					<div class="form_description">
 			<h2>Create Post</h2>
 			<p>Form for User.create_post()</p>
@@ -53,7 +52,7 @@
 					<li class="buttons">
 			    <input type="hidden" name="form_id" value="736263" />
 			    
-				<input id="saveForm" class="button_text" type="submit" name="submit" value="Post It!" />
+				<input id="saveForm" class="button_text" type="submit" name="submit" value="Submit" />
 		</li>
 			</ul>
 		</form>	
