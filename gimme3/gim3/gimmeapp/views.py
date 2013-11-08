@@ -21,7 +21,7 @@ def preform(request):
 	return render_to_response('preforms/form/form.html' )
 
 def new_post(request):
-	return render(request,'preforms/form/form.html' )
+	return render(request,'preforms/form/new_post_form.html' )
 
 def create_post(request):
 	if request.method == 'POST': # If the form has been submitted...
@@ -32,11 +32,12 @@ def create_post(request):
 		# p.price = request.POST.get("element_4","")
 		p.save()
         	postlist = Post.objects.all()
-		# return render(request, 'allposts.html' , { "postlist":postlist } )
 		return HttpResponseRedirect('../allposts')
-	else:
-		return render(request,'preforms/form/form.html' )
+	#else:
+		#return HttpResponseRedirect('../sign-up')
 	
+def sign_up(request):
+	return render(request,'preforms/form/sign_up_form.html' )
 
 def view_post(request,post):
 	p = Post.objects.get(id=post.id)
