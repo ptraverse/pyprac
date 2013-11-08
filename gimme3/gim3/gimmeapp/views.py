@@ -1,6 +1,7 @@
 from django.core.context_processors import csrf
 from django.shortcuts import render_to_response
 from django.shortcuts import render
+from django.shortcuts import HttpResponseRedirect
 from gimmeapp.models import Post
 from gimmeapp.models import User
 from gimmeapp.models import Comment
@@ -23,16 +24,16 @@ def new_post(request):
 	return render(request,'preforms/form/form.html' )
 
 def create_post(request):
-	#c = RequestContext(request)
-	#c.update(csrf(request))
-	p = Post.objects.create()
 	if request.method == 'POST': # If the form has been submitted...
+		p = Post.objects.create()
+		p.user_created = request.POST.get("element_1","")	
 		p.name = request.POST.get("element_2","")
-		user_created = request.POST.get("element_1","")
+		p.description = request.POST.get("element_3","")
+		# p.price = request.POST.get("element_4","")
 		p.save()
         	postlist = Post.objects.all()
-        	# c = RequestContext(request, { "postlist" : postlist } )
-		return render(request, 'allposts.html' , { "postlist":postlist } )
+		# return render(request, 'allposts.html' , { "postlist":postlist } )
+		return HttpResponseRedirect('../allposts')
 	else:
 		return render(request,'preforms/form/form.html' )
 	

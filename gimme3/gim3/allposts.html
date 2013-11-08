@@ -1,11 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Create Post</title>
+<link rel="stylesheet" type="text/css" href="/static/view.css" media="all">
+<script type="text/javascript" src="/static/view.js"></script>
+
+</head>
 {% block content %}
-<h1>Posts </h1>
-<table border='1'>
-{% for p in postlist %}
+<body id="main_body" >
+<div id="form_container">
+<h1>&nbsp; </h1>
+<h2>All Posts</h2>
+
+<table border='1' align="center">
 <tr>
-<td>{{ p.name }}</td><td>{{ p.user_created }}</td>
+<th>
+Created By
+</th>
+<th>
+Name
+</th>
+<th>
+Desc
+</th>
+<th>
+Price
+</th>
+</tr>
+{% for p in postlist %}
+<td>{{ p.user_created }}</td><td>{{ p.name }}</td><td>{{ p.description  }}</td><td>{{ p.price }}</td>
 </tr>
 {% endfor %}
 </table>
-Lazy homepage for now:w
 {% endblock %}
+</div>
+    </body>
+</html>

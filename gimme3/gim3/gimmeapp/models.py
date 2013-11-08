@@ -28,10 +28,12 @@ class Post(models.Model):
 	name = models.CharField(max_length=12)
 	description = models.TextField()
 	price = models.FloatField(default=1.00)
-	#user_created = models.ForeignKey(User)
+	# user_created = models.ForeignKey(User)
 	user_created = models.CharField(max_length=12)	
 	def __repr__(self):
 		return self.name+" by "+self.user_created.repr()
+	def get_model_fields(model):
+		return model._meta.fields
 
 class Comment(models.Model):
 	parent_post = models.ForeignKey(Post)
