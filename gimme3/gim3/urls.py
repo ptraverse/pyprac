@@ -12,6 +12,7 @@ urlpatterns = patterns('',
 	url(r'new-post','gim3.gimmeapp.views.new_post'), 
 	url(r'^sign-up','gim3.gimmeapp.views.sign_up'),
 	url(r'^/post/(.*)','gim3.gimmeapp.views.view_post'),
+	url(r'^log-in','gim3.gimmeapp.views.log_in'),
 	# url(r'^(.+)','gim3.gimmeapp.views.e404_page'),
 	# url(r'','gim3.gimmeapp.views.landing_page'),
 

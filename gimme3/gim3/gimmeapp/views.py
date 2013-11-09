@@ -10,6 +10,26 @@ from gimmeapp.models import Lottery
 from django.template import RequestContext
 from gimmeapp.models import *
 from gimmeapp.forms import PostForm
+from django.contrib.auth import authenticate, login
+
+def log_in(request):
+	if request.method=='POST':
+		username = request.POST.get('username', '')
+		password = request.POST.get('password', '')
+		user = authenticate(username=username, password=password)
+		if user is not None:
+      	 		if user.is_active:
+      	 			login(request, user)
+				return HttpResponseRedirect('../allposts' )
+		
+	       	else:
+			return HttpResponseRedirect('../sign-up')
+	else:
+		return render(request,'login.html' )
+#def log_in(request):
+	
+			
+
 
 def landing_page(request):
 	return render_to_response('preforms/form/landing_page.html' )
