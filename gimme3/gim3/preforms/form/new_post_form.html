@@ -1,15 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Create Post</title>
-<link rel="stylesheet" type="text/css" href="/static/view.css" media="all">
-<script type="text/javascript" src="/static/view.js"></script>
-
-</head>
-<body id="main_body" >
-	
+{% include "base.html" %}	
 	<img id="top" src="top.png" alt="">
 	<div id="form_container">
 	
@@ -17,14 +6,14 @@
 		<form id="form_736263" class="appnitro"  method="POST" action="/create-post/" > {% csrf_token %} 
 					<div class="form_description">
 			<h2>Create Post</h2>
-			<p>Form for User.create_post()</p>
+			<p>Welcome Back {{ user.email  }} <p>
 		</div>						
 			<ul >
 			
 					<li id="li_1" >
 		<label class="description" for="element_1">Created By </label>
 		<div>
-			<input id="element_1" name="element_1" class="element text medium" type="text" maxlength="255" value=""/> 
+			<input id="element_1" name="element_1" class="element text medium" type="text" maxlength="255" value=" {{ user.email  }} " placeholder="Leave Blank for Current Logged in User"/> 
 		</div> 
 		</li>		<li id="li_2" >
 		<label class="description" for="element_2">Name </label>

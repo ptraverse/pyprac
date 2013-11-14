@@ -1,5 +1,8 @@
 from django.db import models
-class User(models.Model):
+from django.contrib.auth.models import User
+
+class Userg(models.Model):
+	auth_user = User 
 	name = models.CharField(max_length=12)
 	date_created = models.DateTimeField()
 	current_points = models.IntegerField()
@@ -7,6 +10,10 @@ class User(models.Model):
 	point_multiplier = models.FloatField()
 	def ___repr__(self):
 		return self.name
+	def ___str__(self):
+		return self.name
+	def get_username(self):
+		return self.auth_user.get_username()
 	def create_post(self,title,description,price):
 		p = Post(name = title,description = description,price = price,user_created = self)
 		p.save()
@@ -38,14 +45,14 @@ class Post(models.Model):
 class Comment(models.Model):
 	parent_post = models.ForeignKey(Post)
 	text = models.TextField()
-	user_created = models.ForeignKey(User)
+	user_created = models.ForeignKey(Userg)
 	date_created = models.DateTimeField()
 	def __repr__(self):
                 return self.user_created.repr()+" on "+self.date_created
 
 class Like(models.Model):
 	parent_post = models.ForeignKey(Post)
-	user_created = models.ForeignKey(User)
+	user_created = models.ForeignKey(Userg)
 	date_created = models.DateTimeField()
 	def __repr__(self):
                 return self.user_created.repr()+" on "+self.date_created

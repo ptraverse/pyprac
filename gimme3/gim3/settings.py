@@ -109,6 +109,7 @@ TEMPLATE_LOADERS = (
 #"django.contrib.messages.context_processors.messages",
 #"django.core.context_processors.request",
 #)
+
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
