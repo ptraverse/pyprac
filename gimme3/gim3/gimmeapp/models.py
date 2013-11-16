@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class Userg(models.Model):
-	auth_user = User 
+	user = models.OneToOneField(User);
 	name = models.CharField(max_length=12)
 	date_created = models.DateTimeField()
 	current_points = models.IntegerField()
@@ -12,8 +12,10 @@ class Userg(models.Model):
 		return self.name
 	def ___str__(self):
 		return self.name
-	def get_username(self):
-		return self.auth_user.get_username()
+	#def get_username(self):
+	#	return self.auth_user.get_username()
+	def related_user_email(self, obj):
+		return obj.user.email
 	def create_post(self,title,description,price):
 		p = Post(name = title,description = description,price = price,user_created = self)
 		p.save()
@@ -33,10 +35,12 @@ class Userg(models.Model):
 
 class Post(models.Model):
 	name = models.CharField(max_length=12)
+	url = models.CharField(max_length=200)
 	description = models.TextField()
 	price = models.FloatField(default=1.00)
-	# user_created = models.ForeignKey(User)
+	userg_created = models.ForeignKey(Userg, blank=True, null=True)
 	user_created = models.CharField(max_length=12)	
+	user_auth_created = models.ForeignKey(User, blank=True, null=True)
 	def __repr__(self):
 		return self.name+" by "+self.user_created.repr()
 	def get_model_fields(model):

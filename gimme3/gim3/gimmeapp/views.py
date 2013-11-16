@@ -8,6 +8,7 @@ from gimmeapp.models import Comment
 from gimmeapp.models import Like
 from gimmeapp.models import Lottery
 from django.template import RequestContext
+from gimmeapp.models import Userg
 from gimmeapp.models import *
 from gimmeapp.forms import PostForm
 from django.contrib.auth import authenticate, login
@@ -46,10 +47,9 @@ def create_post(request):
 	if request.method == 'POST': # If the form has been submitted...
 		p = Post.objects.create()
 		p.user_created = request.POST.get("element_1","")	
-		if (p.user_created == ""):
-			# p.user_created = "PlaceholderAnonymouse"
-			p.user_created = request.user
-			# p.user_created = request.user
+		req_userg = request.user
+		p.userg_created_id = req_userg.id
+		p.user_auth_created = request.user
 		p.name = request.POST.get("element_2","")
 		p.description = request.POST.get("element_3","")
 		# p.price = request.POST.get("element_4","")
@@ -73,14 +73,17 @@ def view_post(request,post):
 	return render_to_response('post.html', {  "post":p } )
 
 def view_all_posts(request):
-	postlist = Post.objects.all()
+	postlist = Post.objects.all()	
 	if (len(postlist)==0):
 		p = Post.objects.create(name="primo")
 		p.save()
 		postlist = [] 
 		postlist.append(p)
+	#emailist = []
+	#for p in postlist:
+	#	emaillist.append(Userg.get_user_email())
 	logged_in_as = request.user	
-	return render(request, 'allposts.html', { "postlist":postlist , "logged_in_as":logged_in_as } )
+	return render(request, 'allposts.html', { "postlist":postlist , "logged_in_as":logged_in_as }  )
 
 def edit_post(request,post):
 	p = Post.objects.get(id=post.id)

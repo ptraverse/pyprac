@@ -10,7 +10,7 @@
 Created By
 </th>
 <th>
-Created By's Name
+Created By's Email
 </th>
 <th>
 Name
@@ -19,19 +19,32 @@ Name
 Desc
 </th>
 <th>
-Price
+Created By ?
+</th>
+<th>
+Debug
 </th>
 </tr>
 {% for p in postlist %}
+<tr 
+	{% if p.id == 1 %}
+		class="odd"
+	{% else %}
+		class="even"
+	{% endif %}
+>
 <td>{{ p.user_created }}</td>
-<td>{{ p.user_created.get_username }}</td>
+<td>{{ p.user_auth_created.email }}</td>
 <td>{{ p.name }}</td>
 <td>{{ p.description  }}</td>
-<td>{{ p.price }}</td>
+<td>{{ p.user_auth_created }}</td>
+<td><pre>{{ p.user_auth_created.password }} </pre></td>
 </tr>
 {% endfor %}
 </table>
 {% endblock %}
 </div>
-
+<pre>
+{{ p }} 
+</pre>
 <a href="/create-post">New Post</a>
